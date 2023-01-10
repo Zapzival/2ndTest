@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <Info />
       <AddItem text="Chris" number={2}/>
-      <AddItem text="Tim"/>
+      <AddItem text="Bob"/>
       <AddItem text="Joe"/>
     </div>
   );
