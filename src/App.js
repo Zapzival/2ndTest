@@ -8,6 +8,7 @@ function App() {
       <AddItem/>
       <AddItem/>
       <AddItem/>
+      <p>Test</p>
     </div>
   );
 }
