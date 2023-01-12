@@ -1,30 +1,28 @@
-import './App.css';
-import Info from "./Info.js"
+import "./App.css";
+import SearchBar from "./SearchBar";
+import AddItem from "./AddItem";
+import ItemsDisplay from "./ItemsDisplay";
+import { useState } from "react";
 
 function App() {
+  const [filters, setFilters] = useState({});
+  const [data, setData] = useState({ items: [] });
+  const updateFilters = (searchParams) => {
+    setFilters(searchParams);
+  };
+  const addItemToData = (item) => {
+    let items = data["items"];
+    item.id = items.length;
+    items.push(item);
+    setData({ items: items });
+    console.log(data);
+  };
   return (
     <div className="App">
-      <Info />
-      <AddItem/>
-      <AddItem/>
-      <AddItem/>
-      <p>Test</p>
+      <SearchBar updateSearchParams={updateFilters} />
+      <ItemsDisplay items={data["items"]} />
+      <AddItem addItem={addItemToData} />
     </div>
   );
 }
-
-
-
-function AddItem(props) {
-  const value = props.text;
-
-  return (
-    <form>
-      <label for="text-form">Type something: </label>
-      <input type="text" value={value} id="text-form"/>
-      <p>{props.number}</p>
-    </form>
-  )
-}
-
 export default App;
